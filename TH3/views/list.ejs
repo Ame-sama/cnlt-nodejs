@@ -1,0 +1,17 @@
+<%- include('layouts/header') %>
+<%- include('layouts/navbar') %>
+<header class="masthead" style="background-image: url('<%= bgImage %>')">
+    <div class="container position-relative px-4 px-lg-5"><div class="page-heading"><h1>Blog List</h1></div></div>
+</header>
+<div class="container px-4 px-lg-5">
+    <% posts.forEach(post => { %>
+        <div class="post-preview">
+            <a href="/detail/<%= post.id %>"><h2 class="post-title"><%= post.title %></h2></a>
+            <p class="post-meta">Posted by <%= post.author %> on <%= post.date %> 
+                <% if(post.hot) { %><b style="color:red"> [HOT]</b><% } %>
+            </p>
+        </div>
+        <hr />
+    <% }) %>
+</div>
+<%- include('layouts/footer') %>
