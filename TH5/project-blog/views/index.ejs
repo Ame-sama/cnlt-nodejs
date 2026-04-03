@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .btn-edit { color: blue; text-decoration: none; margin-right: 10px; }
+        .btn-delete { color: red; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; font-size: inherit; }
+    </style>
+</head>
+<body>
+    <h1>Danh sách bài viết</h1>
+    <a href="/blogposts/new">Tạo bài viết mới</a>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li>
+                <strong><%= post.title %></strong><br>
+                <span><%= post.body %></span><br>
+                
+                <a href="/blogposts/<%= post._id %>">Xem chi tiết</a> | 
+
+                <a href="/post/edit/<%= post._id %>" class="btn-edit">Sửa bài</a> |
+
+                <form action="/posts/delete/<%= post._id %>" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc muốn xóa bài này không?')">
+                        Xóa bài
+                    </button>
+                </form>
+            </li>
+            <hr>
+        <% }) %>
+    </ul>
+</body>
+</html>

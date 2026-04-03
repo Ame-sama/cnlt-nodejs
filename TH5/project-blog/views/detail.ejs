@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= post.title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="post-detail">
+            <h1><%= post.title %></h1>
+            
+            <span class="post-meta">
+                Đăng bởi: <strong><%= post.username || 'Ẩn danh' %></strong> 
+            </span>
+
+            <div class="post-content">
+                <%= post.body %>
+            </div>
+
+            <div class="detail-actions">
+                <a href="/" class="btn-create" style="background-color: #7f8c8d;">← Về trang chủ</a>
+                <a href="/post/edit/<%= post._id %>" class="btn-create" style="margin-left: 10px;">Sửa bài này</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
