@@ -1,0 +1,114 @@
+### 1. Đăng nhập đúng
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "123456"
+}
+
+### 2. Đăng nhập sai
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "sai"
+}
+
+### 3. Danh sách sinh viên (phải đăng nhập trước)
+GET http://localhost:3000/students
+
+### 4. Chi tiết sinh viên
+GET http://localhost:3000/students/1
+
+### 5. Tìm kiếm theo tên
+GET http://localhost:3000/students?name=van
+
+### 6. Lọc theo lớp
+GET http://localhost:3000/students?class=CNTT1
+
+### 7. Sắp xếp theo tuổi giảm dần
+GET http://localhost:3000/students?sort=age_desc
+
+### 8. Phân trang
+GET http://localhost:3000/students?page=1&limit=2
+
+### 9. Thêm sinh viên
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Nguyen Van K",
+    "email": "k@gmail.com",
+    "age": 20,
+    "class": "CNTT1"
+}
+
+### 10. Cập nhật sinh viên
+PUT http://localhost:3000/students/1
+Content-Type: application/json
+
+{
+    "name": "Nguyen Van A Updated",
+    "email": "a@gmail.com",
+    "age": 21,
+    "class": "CNTT1"
+}
+
+### 11. Xóa mềm sinh viên
+DELETE http://localhost:3000/students/1
+
+### 12. Kiểm tra sau xóa mềm (id=1 không còn hiện)
+GET http://localhost:3000/students
+
+### 13. Validate tên ngắn
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "A",
+    "email": "test@gmail.com",
+    "age": 20,
+    "class": "CNTT1"
+}
+
+### 14. Validate email sai
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Nguyen Van L",
+    "email": "emailsai",
+    "age": 20,
+    "class": "CNTT1"
+}
+
+### 15. Validate tuổi sai
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name": "Nguyen Van M",
+    "email": "m@gmail.com",
+    "age": 15,
+    "class": "CNTT1"
+}
+
+### 16. Thống kê tổng quan
+GET http://localhost:3000/students/stats
+
+### 17. Thống kê theo lớp
+GET http://localhost:3000/students/stats/class
+
+### 18. Heavy sync
+GET http://localhost:3000/heavy-sync
+
+### 19. Heavy async
+GET http://localhost:3000/heavy-async
+
+### 20. Đăng xuất
+POST http://localhost:3000/logout
+
+### 21. Truy cập sau khi đăng xuất (phải báo chưa đăng nhập)
+GET http://localhost:3000/students
